@@ -5,40 +5,40 @@ namespace Corner49.PayNL.V3.DataTransferObjects.Orders;
 
 public class V3Order {
 	[JsonPropertyName("id")]
-	public string Id { get; set; }
+	public string? Id { get; set; }
 
 	[JsonPropertyName("serviceId")]
-	public string ServiceId { get; set; }
+	public string? ServiceId { get; set; }
 
 	[JsonPropertyName("description")]
-	public string Description { get; set; }
+	public string? Description { get; set; }
 
 	[JsonPropertyName("reference")]
-	public string Reference { get; set; }
+	public string? Reference { get; set; }
 
 	[JsonPropertyName("manualTransferCode")]
-	public string ManualTransferCode { get; set; }
+	public string? ManualTransferCode { get; set; }
 
 	[JsonPropertyName("orderId")]
-	public string OrderId { get; set; }
+	public string? OrderId { get; set; }
 
 	[JsonPropertyName("uuid")]
-	public string Uuid { get; set; }
+	public string? Uuid { get; set; }
 
 	[JsonPropertyName("customerKey")]
-	public string CustomerKey { get; set; }
+	public string? CustomerKey { get; set; }
 
 	[JsonPropertyName("status")]
-	public Status Status { get; set; }
+	public Status? Status { get; set; }
 
 	[JsonPropertyName("receipt")]
-	public string Receipt { get; set; }
+	public string? Receipt { get; set; }
 
 	[JsonPropertyName("integration")]
-	public Integration Integration { get; set; }
+	public Integration? Integration { get; set; }
 
 	[JsonPropertyName("amount")]
-	public Amount Amount { get; set; }
+	public Amount? Amount { get; set; }
 
 	[JsonPropertyName("authorizedAmount")]
 	public Amount AuthorizedAmount { get; set; }
