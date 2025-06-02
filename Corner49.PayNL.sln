@@ -1,0 +1,36 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.14.36127.28 d17.14
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Corner49.PayNL", "Corner49.PayNL\Corner49.PayNL.csproj", "{D10BD648-2A03-5876-5C80-EC09617C2AB4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Corner49.PayNL.Tests", "Corner49.PayNL.Tests\Corner49.PayNL.Tests.csproj", "{D97CEB8A-4308-7731-1A49-197C69EA3064}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{8EC462FD-D22E-90A8-E5CE-7E832BA40C5D}"
+	ProjectSection(SolutionItems) = preProject
+		README.md = README.md
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{D10BD648-2A03-5876-5C80-EC09617C2AB4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D10BD648-2A03-5876-5C80-EC09617C2AB4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D10BD648-2A03-5876-5C80-EC09617C2AB4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D10BD648-2A03-5876-5C80-EC09617C2AB4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D97CEB8A-4308-7731-1A49-197C69EA3064}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D97CEB8A-4308-7731-1A49-197C69EA3064}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D97CEB8A-4308-7731-1A49-197C69EA3064}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D97CEB8A-4308-7731-1A49-197C69EA3064}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {3A5A6D52-4983-49F2-B8DE-0CD66D107D7B}
+	EndGlobalSection
+EndGlobal
