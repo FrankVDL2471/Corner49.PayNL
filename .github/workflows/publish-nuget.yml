@@ -1,0 +1,42 @@
+name: Publish NuGet Package
+ 
+on:
+  push:
+    branches:
+      - main
+      - 'release/*' # Trigger on any branch named 'release/*'
+
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    
+    env:
+      APP_VERSION: 9.3.${{github.run_number}}
+    
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v3
+ 
+    - name: Setup .NET
+      uses: actions/setup-dotnet@v3
+      with:
+        dotnet-version: '9.x' # Specify the .NET version you need
+
+    - name: Print new build number
+      run: echo "App version is ${{ env.APP_VERSION }}"
+      # Or, if you're on Windows: echo "Build number is ${env:BUILD_NUMBER}"
+ 
+    - name: Restore dependencies
+      run: dotnet restore
+ 
+    - name: Build the project
+      run: dotnet build --configuration Release --no-restore /p:FileVersion=${{ env.APP_VERSION }} /p:AssemblyVersion=${{ env.APP_VERSION }} /p:Version=${{ env.APP_VERSION }}
+ 
+    - name: Pack the NuGet package
+      run: dotnet pack --configuration Release --no-build --output ./nupkg /p:Version=${{ env.APP_VERSION }}
+ 
+    - name: Publish NuGet package
+      run: dotnet nuget push ./nupkg/*.nupkg --api-key ${{ secrets.NUGET_API_KEY }} --source https://api.nuget.org/v3/index.json
+      env:
+        NUGET_API_KEY: ${{ secrets.NUGET_API_KEY }}
