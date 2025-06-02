@@ -42,7 +42,7 @@ public class ClearingAccounts {
 	[Fact]
 	public async Task GetClearingAccounts() {
 		var client = TestHelper.CreateClientV2();
-		var clearingAccounts = await client.BrowseClearingAccounts("M-3421-2120");
+		var clearingAccounts = await client.BrowseClearingAccounts(Environment.GetEnvironmentVariable("PAY_MERCHANTID"));
 
 		Assert.NotNull(clearingAccounts.ClearingAccounts);
 		Assert.NotNull(clearingAccounts.ClearingAccounts[0].Code);

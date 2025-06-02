@@ -14,6 +14,7 @@ public class Transactions {
 				Value = 1000,
 			},
 			ReturnUrl = "https://demo.pay.nl/complete/",
+			Integration = new Integration {  TestMode = true }
 		});
 
 		Assert.NotNull(trx);
@@ -31,6 +32,7 @@ public class Transactions {
 				Value = 1000,
 			},
 			ReturnUrl = "https://demo.pay.nl/complete/",
+			Integration = new Integration { TestMode = true }
 		});
 
 		var trxInfo = await client.GetTransactionInfo(trx.OrderId!);
@@ -48,6 +50,7 @@ public class Transactions {
 				Value = 1000,
 			},
 			ReturnUrl = "https://demo.pay.nl/complete/",
+			Integration = new Integration { TestMode = true }
 		});
 
 		await client.CancelTransaction(trx.Id!);
@@ -64,6 +67,7 @@ public class Transactions {
 				Value = 2000,
 			},
 			ReturnUrl = "https://demo.pay.nl/complete/",
+			Integration = new Integration { TestMode = true }
 		});
 		await client.ApproveTransaction(trx.Id!);
 
@@ -88,6 +92,7 @@ public class Transactions {
 				Value = 2000,
 			},
 			ReturnUrl = "https://demo.pay.nl/complete/",
+			Integration = new Integration { TestMode = true }
 		});
 		await client.DeclineTransaction(trx.Id!);
 

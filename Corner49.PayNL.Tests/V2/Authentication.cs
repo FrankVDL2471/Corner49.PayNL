@@ -32,7 +32,7 @@ public class Authentication {
 	public async Task AuthenticationTokenCreateAndDelete() {
 		var client = TestHelper.CreateClientV2();
 		var authenticationTokenResponse = await client.AuthenticationTokenCreate(new AuthenticationTokenCreateRequest {
-			MerchantCode = "M-3421-2120",
+			MerchantCode = Environment.GetEnvironmentVariable("PAY_MERCHANTID"),
 			AuthenticationToken = new AuthenticationToken {
 				Description = "SDK Xunit Test Token",
 				Authorisation = "all",
@@ -49,7 +49,7 @@ public class Authentication {
 	public async Task AuthenticationTokenCreateDeleteAndUndelete() {
 		var client = TestHelper.CreateClientV2();
 		var authenticationTokenResponse = await client.AuthenticationTokenCreate(new AuthenticationTokenCreateRequest {
-			MerchantCode = "M-3421-2120",
+			MerchantCode = Environment.GetEnvironmentVariable("PAY_MERCHANTID"),
 			AuthenticationToken = new AuthenticationToken {
 				Description = "SDK Xunit Test Token",
 				Authorisation = "all",
@@ -71,7 +71,7 @@ public class Authentication {
 	public async Task AuthenticationTokenGet() {
 		var client = TestHelper.CreateClientV2();
 		var authenticationTokenResponse = await client.AuthenticationTokenCreate(new AuthenticationTokenCreateRequest {
-			MerchantCode = "M-3421-2120",
+			MerchantCode = Environment.GetEnvironmentVariable("PAY_MERCHANTID"),
 			AuthenticationToken = new AuthenticationToken {
 				Description = "SDK Xunit Test Token",
 				Authorisation = "all",
@@ -91,7 +91,7 @@ public class Authentication {
 	public async Task AuthenticationTokenBrowse() {
 		var client = TestHelper.CreateClientV2();
 		var authenticationTokenResponse = await client.AuthenticationTokenCreate(new AuthenticationTokenCreateRequest {
-			MerchantCode = "M-3421-2120",
+			MerchantCode = Environment.GetEnvironmentVariable("PAY_MERCHANTID"),
 			AuthenticationToken = new AuthenticationToken {
 				Description = "SDK Xunit Test Token",
 				Authorisation = "all",
@@ -101,7 +101,7 @@ public class Authentication {
 		Assert.NotNull(authenticationTokenResponse);
 		Assert.NotNull(authenticationTokenResponse.Code);
 
-		var response = await client.AuthenticationTokenBrowse("M-3421-2120");
+		var response = await client.AuthenticationTokenBrowse(Environment.GetEnvironmentVariable("PAY_MERCHANTID"));
 		Assert.NotNull(response);
 		Assert.NotNull(response.AuthenticationTokens);
 		Assert.Contains(authenticationTokenResponse.Code, response.AuthenticationTokens.Select(x => x.Code).ToList());

@@ -9,6 +9,7 @@ public class Json {
 		Converters = { new DateOnlyConverter() },
 		NumberHandling = JsonNumberHandling.AllowReadingFromString,
 		PropertyNamingPolicy = JsonNamingPolicy.CamelCase,
+		DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingNull
 	};
 
 	public static string Serialize(object input) {

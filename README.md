@@ -102,6 +102,7 @@ In order run the unit tests the following environment variables needs too be set
 | PAY_APIKEY                  | Your pay API Token from the pay dashboard                   |
 | PAY_AT                      | AT code of the API Token (AT-1234-1234)                     |
 | PAY_SERVICEID               | Service location code                                       |
+| PAY_MERCHANTID              | Merchant code (M-1223-1234)                                 |
 | PAY_MANDATEID               | Mandate code used for direct debit orders                   |
 | PAY_BANKACCOUNTNUMBER       | Iban number used for clearing and diriect debit order tests |
 | PAY_BANKACCOUNTHOLDER       | Account holder of the above Iban                            |
