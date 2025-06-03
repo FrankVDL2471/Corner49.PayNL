@@ -124,7 +124,7 @@ Source: https://learn.microsoft.com/en-us/dotnet/standard/net-standard?tabs=net-
 
 ### Implemented features API V2
 
-- Transactions
+- [ ] Transactions
     - [x] Create
     - [x] View
     - [x] Cancel
@@ -135,6 +135,9 @@ Source: https://learn.microsoft.com/en-us/dotnet/standard/net-standard?tabs=net-
     - [x] Void
     - [x] Load
     - [ ] Load UUID
+- [x] Refund
+    - [x] Add
+    - [x] Info
 - [x] Get available currencies
 - [x] DirectDebits CRUD
 - [x] Ip addresses

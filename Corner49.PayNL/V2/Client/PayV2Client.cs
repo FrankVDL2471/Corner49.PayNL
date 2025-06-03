@@ -1,4 +1,3 @@
-using System.Net;
 using Corner49.PayNL.Utilities;
 using Corner49.PayNL.Utilities.QueryFilterExtensions;
 using Corner49.PayNL.V2.DataTransferModels.Authentication;
@@ -16,6 +15,7 @@ using Corner49.PayNL.V2.DataTransferModels.Merchants;
 using Corner49.PayNL.V2.DataTransferModels.Merchants.Clearings;
 using Corner49.PayNL.V2.DataTransferModels.Merchants.InvoiceLines;
 using Corner49.PayNL.V2.DataTransferModels.PaymentMethods;
+using Corner49.PayNL.V2.DataTransferModels.Refund;
 using Corner49.PayNL.V2.DataTransferModels.Services;
 using Corner49.PayNL.V2.DataTransferModels.SignupProfiles;
 using Corner49.PayNL.V2.DataTransferModels.TerminalPayments;
@@ -24,6 +24,7 @@ using Corner49.PayNL.V2.DataTransferModels.Trademarks;
 using Corner49.PayNL.V2.DataTransferModels.Transaction;
 using Corner49.PayNL.V2.DataTransferModels.TurnoverGroups;
 using Corner49.PayNL.V2.DataTransferModels.Vouchers;
+using System.Net;
 using Service = Corner49.PayNL.V2.DataTransferModels.Merchants.Service;
 
 namespace Corner49.PayNL.V2.Client;
@@ -235,4 +236,15 @@ public class PayV2Client : PayV2ClientBase, IPayV2Client {
 	public Task DeleteTurnoverGroup(string turnoverGroupCode) => _httpClient.DeleteAsync($"turnovergroups/{turnoverGroupCode}");
 
 	public Task<TurnoverGroupResponse> UndeleteTurnoverGroup(string turnoverGroupCode) => _httpClient.PostAsync<TurnoverGroupResponse>($"turnovergroups/{turnoverGroupCode}/undelete")!;
+
+
+
+	public async Task<RefundAddResponse?> AddRefund(RefundAddRequest body)
+	{
+		body.ServiceId = string.IsNullOrEmpty(body.ServiceId) ? ServiceId : body.ServiceId;
+		return await _httpClient.PostAsync<RefundAddResponse>($"https://rest-api.pay.nl/v3/Refund/add/json", body)!;
+	}
+
+	public Task<RefundInfoResponse> GetRefund(string refundId, string? baseurl = "https://rest-api.pay.nl/v3/") => _httpClient.GetAsync<RefundInfoResponse>($"{baseurl}Refund/info/json?refundId={refundId}")!;
+
 }

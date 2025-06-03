@@ -16,8 +16,8 @@ internal class PayHttpClient {
 	internal async Task<T?> GetAsync<T>(string url) {
 		var response = await GetAsyncNoExceptionHandling(url);
 		await response.HandleException();
-		var result = await response.Content.ReadAsStreamAsync();
-		return await JsonSerializer.DeserializeAsync<T>(result);
+		var result = await response.Content.ReadAsStringAsync();
+		return Json.Deserialize<T>(result);
 	}
 
 	internal async Task<HttpResponseMessage> GetAsyncNoExceptionHandling(string url) {
@@ -29,15 +29,16 @@ internal class PayHttpClient {
 	internal async Task<T?> PostAsync<T>(string url, object? body = null) {
 		StringContent? content = null;
 		if (body != null) {
-			content = new StringContent(Json.Serialize(body), Encoding.UTF8, "application/json");
+			var data = Json.Serialize(body);
+			content = new StringContent(data, Encoding.UTF8, "application/json");
 		}
 
 		var response = await _client.PostAsync(url, content);
 		await CallCallback(response);
 
 		await response.HandleException();
-		var result = await response.Content.ReadAsStreamAsync();
-		return await Json.DeserializeAsync<T>(result);
+		var result = await response.Content.ReadAsStringAsync();
+		return Json.Deserialize<T>(result);
 	}
 
 	internal async Task<T?> PostUrlEncodedAsync<T>(string url, Dictionary<string, string> body) {

@@ -15,6 +15,7 @@ using Corner49.PayNL.V2.DataTransferModels.Merchants;
 using Corner49.PayNL.V2.DataTransferModels.Merchants.Clearings;
 using Corner49.PayNL.V2.DataTransferModels.Merchants.InvoiceLines;
 using Corner49.PayNL.V2.DataTransferModels.PaymentMethods;
+using Corner49.PayNL.V2.DataTransferModels.Refund;
 using Corner49.PayNL.V2.DataTransferModels.Services;
 using Corner49.PayNL.V2.DataTransferModels.SignupProfiles;
 using Corner49.PayNL.V2.DataTransferModels.TerminalPayments;
@@ -513,4 +514,8 @@ public interface IPayV2Client {
 	/// This can only be done within a 15 minute time window
 	/// </summary>
 	Task<TurnoverGroupResponse> UndeleteTurnoverGroup(string turnoverGroupCode);
+
+	Task<RefundAddResponse?> AddRefund(RefundAddRequest body);
+
+	Task<RefundInfoResponse> GetRefund(string refundId, string? baseurl = "https://rest-api.pay.nl/v3/");
 }

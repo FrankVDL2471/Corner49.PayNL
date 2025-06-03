@@ -10,9 +10,18 @@
         <Title>Corner49 PayNL Sdk</Title>
         <Authors>FVDL Consulting</Authors>
         <Description>Pay.nl Sdk for .NET forked from the original PayNL .Net SDK</Description>
-        <Copyright>Copyright 2024</Copyright>
+        <Copyright>Copyright 2025</Copyright>
         <PackageTags>pay.nl payments pay paynl</PackageTags>
+        <PackageProjectUrl></PackageProjectUrl>
+        <RepositoryUrl>https://github.com/FrankVDL2471/Corner49.PayNL</RepositoryUrl>
+        <PackageReadmeFile>README.md</PackageReadmeFile>
     </PropertyGroup>
+    <ItemGroup>
+      <None Include="..\README.md">
+        <Pack>True</Pack>
+        <PackagePath>\</PackagePath>
+      </None>
+    </ItemGroup>
     <ItemGroup>
       <PackageReference Include="HttpMultipartParser" Version="9.0.0" />
       <PackageReference Include="System.Text.Json" Version="9.0.5" />
