@@ -50,14 +50,14 @@ internal class PayHttpClient {
 		await CallCallback(response);
 
 		await response.HandleException();
-		var result = await response.Content.ReadAsStreamAsync();
-		return await Json.DeserializeAsync<T>(result);
+		var result = await response.Content.ReadAsStringAsync();
+		return Json.Deserialize<T>(result);
 	}
 
 	internal async Task<T?> PatchAsync<T>(string url, object? body = null) {
 		var response = await PatchAsync(url, body);
-		var result = await response.Content.ReadAsStreamAsync();
-		return await Json.DeserializeAsync<T>(result);
+		var result = await response.Content.ReadAsStringAsync();
+		return Json.Deserialize<T>(result);
 	}
 
 	internal async Task<HttpResponseMessage> PatchAsync(string url, object? body = null) {

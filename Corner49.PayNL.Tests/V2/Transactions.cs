@@ -58,20 +58,22 @@ public class Transactions {
 		Assert.Equal(-90, trxInfo.Status!.Code);
 	}
 
-	[Fact(Skip = "Transaction must be paid first")]
+	[Fact()]
 	public async Task CanRefund() {
 		var client = TestHelper.CreateClientV2();
 
-		var trx = await client.CreateTransaction(new CreateTransactionRequest {
-			Amount = new Amount {
-				Value = 2000,
-			},
-			ReturnUrl = "https://demo.pay.nl/complete/",
-			Integration = new Integration { TestMode = true }
-		});
-		await client.ApproveTransaction(trx.Id!);
+		//var trx = await client.CreateTransaction(new CreateTransactionRequest {
+		//	Amount = new Amount {
+		//		Value = 2000,
+		//	},
+		//	ReturnUrl = "https://demo.pay.nl/complete/",
+		//	Integration = new Integration { TestMode = true }
+		//});
+		string trxId = "EX-3524-1057-8882";
 
-		var refundResponse = await client.RefundTransaction(trx.Id!, new RefundTransactionRequest {
+		var approve = await client.ApproveTransaction(trxId);
+
+		var refundResponse = await client.RefundTransaction(trxId, new RefundTransactionRequest {
 			Amount = new Amount {
 				Value = 1000,
 			},
@@ -79,7 +81,7 @@ public class Transactions {
 
 		Assert.Equal(1000, refundResponse.Amount!.Value);
 
-		var trxInfo = await client.GetTransactionInfo(trx.Id!);
+		var trxInfo = await client.GetTransactionInfo(trxId);
 		Assert.Equal(1000, trxInfo.AmountRefunded!.Value);
 	}
 

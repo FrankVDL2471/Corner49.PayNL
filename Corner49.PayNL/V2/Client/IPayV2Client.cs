@@ -337,7 +337,7 @@ public interface IPayV2Client {
 	/// <summary>
 	/// You can create a payment page for invoice payments & donations
 	/// </summary>
-	Task<PaymentLinkResponse> PaymentLinkCreate(string serviceId, PaymentLinkRequest body);
+	Task<PaymentLinkResponse> PaymentLinkCreate(PaymentLinkRequest body, string? serviceId = null);
 
 	/// <summary>
 	/// Retrieve a handshake to redirect a user to the Pay platform so that a user can access the Pay platform without entering login credentials.

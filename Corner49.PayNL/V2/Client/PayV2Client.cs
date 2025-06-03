@@ -167,7 +167,7 @@ public class PayV2Client : PayV2ClientBase, IPayV2Client {
 
 	public Task<SuccessfulRefundResponse> RefundTransaction(string transactionId, RefundTransactionRequest body) => _httpClient.PatchAsync<SuccessfulRefundResponse>($"transactions/{transactionId}/refund", body)!;
 
-	public Task<ApproveDenyTransactionResponse> ApproveTransaction(string transactionId) => _httpClient.PatchAsync<ApproveDenyTransactionResponse>($"transactions/{transactionId}/refund")!;
+	public Task<ApproveDenyTransactionResponse> ApproveTransaction(string transactionId) => _httpClient.PatchAsync<ApproveDenyTransactionResponse>($"transactions/{transactionId}/approve")!;
 
 	public Task<ApproveDenyTransactionResponse> DeclineTransaction(string transactionId) => _httpClient.PatchAsync<ApproveDenyTransactionResponse>($"transactions/{transactionId}/decline")!;
 
@@ -179,7 +179,7 @@ public class PayV2Client : PayV2ClientBase, IPayV2Client {
 
 	public Task<DocumentAddResponse> AddDocuments(DocumentAddRequest body) => _httpClient.PostAsync<DocumentAddResponse>("documents", body)!;
 
-	public Task<PaymentLinkResponse> PaymentLinkCreate(string serviceId, PaymentLinkRequest body) => _httpClient.PostAsync<PaymentLinkResponse>($"services/{serviceId}/paymentlink", body)!;
+	public Task<PaymentLinkResponse> PaymentLinkCreate(PaymentLinkRequest body, string? serviceId = null) => _httpClient.PostAsync<PaymentLinkResponse>($"services/{serviceId ?? this.ServiceId}/paymentlink", body)!;
 
 	public Task<AuthenticateLoginResponse> AuthenticateLogin(AuthenticateLoginRequest body) => _httpClient.PostAsync<AuthenticateLoginResponse>("login/authenticate", body)!;
 
