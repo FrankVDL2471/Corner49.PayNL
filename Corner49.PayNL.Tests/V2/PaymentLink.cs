@@ -9,7 +9,7 @@ public class PaymentLink {
 	public async Task PaymentLinkCreate() {
 		var client = TestHelper.CreateClientV2();
 
-		var paymentLink = await client.PaymentLinkCreate(Environment.GetEnvironmentVariable("PAY_SERVICEID") ?? "", new PaymentLinkRequest {
+		var paymentLink = await client.PaymentLinkCreate(new PaymentLinkRequest {
 			SecurityMode = 0,
 			Language = "nl_NL",
 			Amount = new Amount {
@@ -18,7 +18,7 @@ public class PaymentLink {
 			AmountMin = new Amount {
 				Value = 1
 			},
-		});
+		}, Environment.GetEnvironmentVariable("PAY_SERVICEID"));
 
 		Assert.NotNull(paymentLink);
 		Assert.NotNull(paymentLink.Url);
