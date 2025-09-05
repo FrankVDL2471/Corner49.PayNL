@@ -13,6 +13,8 @@ namespace Corner49.PayNL.Utilities {
 		[JsonPropertyName("payment_method_id")]
 		public int? PaymentMethodId { get; set; }
 
+		[JsonPropertyName("payment_session_id")]
+		public string? PaymentSessionId { get; set; }
 
 		[JsonIgnore]
 		public string? PaymentMethod { get; set; }
@@ -21,8 +23,9 @@ namespace Corner49.PayNL.Utilities {
 		[JsonPropertyName("order_id")]
 		public string? OrderId { get; set; }
 
-		
 
+		[JsonPropertyName("ip_address")]
+		public string? IpAddress { get; set; }
 
 
 		public static async Task<WebHook?> Parse(Stream data, bool isJson = true) {
