@@ -14,7 +14,7 @@ namespace Corner49.PayNL.Utilities {
 		public int? PaymentMethodId { get; set; }
 
 		[JsonPropertyName("payment_session_id")]
-		public string? PaymentSessionId { get; set; }
+		public int? PaymentSessionId { get; set; }
 
 		[JsonIgnore]
 		public string? PaymentMethod { get; set; }
